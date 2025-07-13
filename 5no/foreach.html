@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods </title>
+</head>
+<body>
+    <h2>Open Console to See Array Methods in Action</h2>
+    <script>
+        // Demonstrating forEach(), map(), filter(), reduce() methods on an array
+        let numbers = [1, 2, 3, 4, 5];
+
+        // forEach(): Iterate over each element and print its double
+        console.log("Using forEach:");
+        numbers.forEach(num => console.log(num * 2));
+
+        // map(): Create a new array by multiplying each element by 2
+        let doubled = numbers.map(num => num * 2);
+        console.log("Using map:", doubled);
+
+        // filter(): Get only even numbers
+        let evens = numbers.filter(num => num % 2 === 0);
+        console.log("Using filter:", evens);
+
+        // reduce(): Sum of all elements in the array
+        let sum = numbers.reduce((acc, num) => acc + num, 0);
+        console.log("Using reduce:", sum);
+    </script>
+</body>
+</html>
