@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        #myPara {
+            padding: 10px;
+            border: 1px solid black;
+            display: inline-block;
+        }
+        .highlight {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
 
+    <p id="myPara">This is a paragraph.</p>
+    <br><br>
+    <button onclick="changeBgColor()">Change Background</button>
+    <button onclick="appendSpan()">Append Span</button>
+    <button onclick="prependSpan()">Prepend Span</button>
+    <button onclick="removeSpan()">Remove Span</button>
+
+    <script>
+        // Function to change background color
+        function changeBgColor() {
+            let para = document.getElementById("myPara");
+            para.classList.toggle("highlight"); // Toggle background color
+        }
+
+        // Function to append a span
+        function appendSpan() {
+            let para = document.getElementById("myPara");
+            let span = document.createElement("span");
+            span.textContent = " (Appended)";
+            span.classList.add("added-span");
+            para.appendChild(span);
+        }
+
+        // Function to prepend a span
+        function prependSpan() {
+            let para = document.getElementById("myPara");
+            let span = document.createElement("span");
+            span.textContent = "(Prepended) ";
+            span.classList.add("added-span");
+            para.prepend(span);
+        }
+
+        // Function to remove the span elements
+        function removeSpan() {
+            let spans = document.querySelectorAll(".added-span");
+            spans.forEach(span => span.remove());
+        }
+    </script>
+
+</body>
+</html>

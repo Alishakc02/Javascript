@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Boxes in JavaScript</title>
+</head>
+<body>
+
+    <button onclick="showAlert()">Show Alert</button>
+    <button onclick="showConfirm()">Show Confirm</button>
+    <button onclick="showPrompt()">Show Prompt</button>
+
+    <script>
+        // Function to show an alert box
+        function showAlert() {
+            alert("This is an alert box!");
+        }
+
+        // Function to show a confirm box
+        function showConfirm() {
+            let result = confirm("Do you want to proceed?");
+            if (result) {
+                alert("You pressed OK!");
+            } else {
+                alert("You pressed Cancel!");
+            }
+        }
+
+        // Function to show a prompt box
+        function showPrompt() {
+            let name = prompt("Please enter your name:");
+            if (name != null) {
+                alert("Hello, " + name + "!");
+            } else {
+                alert("You didn't enter your name!");
+            }
+        }
+    </script>
+
+</body>
+</html>
