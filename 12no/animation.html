@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Animation</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .container { position: relative; width: 100%; height: 300px; border: 2px solid black; overflow: hidden; }
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Animation Demo</h2>
+    <div class="container">
+        <div class="box" id="animatedBox"></div>
+    </div>
+    <button onclick="startAnimation()">Start Animation</button>
+
+    <script>
+        function startAnimation() {
+            let box = document.getElementById("animatedBox");
+            let position = 0;
+            let containerWidth = document.querySelector(".container").offsetWidth;
+            let boxWidth = box.offsetWidth;
+            let interval = setInterval(() => {
+                if (position >= containerWidth - boxWidth) {
+                    clearInterval(interval);
+                } else {
+                    position += 5;
+                    box.style.left = position + "px";
+                }
+            }, 20);
+        }
+    </script>
+</body>
+</html>
