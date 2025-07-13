@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Cookies Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Cookies Demonstration</h2>
+    <label>Enter your name: <input type="text" id="username"></label>
+    <button onclick="setCookie()">Save Name</button>
+    <button onclick="getCookie()">Show Saved Name</button>
+    <button onclick="deleteCookie()">Delete Name</button>
+    <p id="output"></p>
+
+    <script>
+        function setCookie() {
+            let name = document.getElementById("username").value;
+            if (name) {
+                document.cookie = `username=${name}; path=/; expires=${new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toUTCString()}`;
+                document.getElementById("output").innerText = "Cookie has been set!";
+            } else {
+                alert("Please enter a name");
+            }
+        }
+
+        function getCookie() {
+            let cookies = document.cookie.split("; ");
+            for (let i = 0; i < cookies.length; i++) {
+                let cookiePair = cookies[i].split("=");
+                if (cookiePair[0] === "username") {
+                    document.getElementById("output").innerText = "Saved Name: " + cookiePair[1];
+                    return;
+                }
+            }
+            document.getElementById("output").innerText = "No saved name found.";
+        }
+
+        function deleteCookie() {
+            document.cookie = "username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+            document.getElementById("output").innerText = "Cookie has been deleted.";
+        }
+    </script>
+</body>
+</html>
