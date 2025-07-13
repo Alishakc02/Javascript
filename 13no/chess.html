@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard using JavaScript</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            width: 400px;
+            margin: 20px auto;
+            border: 2px solid black;
+        }
+        .square {
+            width: 50px;
+            height: 50px;
+        }
+        .black { background-color: black; }
+        .white { background-color: #f0d9b5; }
+    </style>
+</head>
+<body>
+    <h2>Chessboard Pattern using JavaScript and DOM</h2>
+    <div class="chessboard" id="chessboard"></div>
+
+    <script>
+        function createChessboard() {
+            let board = document.getElementById("chessboard");
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    let square = document.createElement("div");
+                    square.className = "square " + ((row + col) % 2 === 0 ? "white" : "black");
+                    board.appendChild(square);
+                }
+            }
+        }
+        createChessboard();
+    </script>
+</body>
+</html>
