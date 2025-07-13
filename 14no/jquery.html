@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery and Window Load Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // JavaScript Window Load Event
+        window.onload = function() {
+            console.log("Window fully loaded.");
+            document.getElementById("windowLoadMsg").innerText = "Window has fully loaded!";
+        };
+        
+        // JavaScript Document Content Ready
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("DOM is fully loaded but external resources may still be loading.");
+            document.getElementById("domReadyMsg").innerText = "DOM is fully loaded!";
+        });
+        
+        // jQuery Document Ready Event
+        $(document).ready(function() {
+            console.log("jQuery - Document is ready!");
+            $("#jqueryReadyMsg").text("jQuery: Document is ready!");
+        });
+    </script>
+</head>
+<body>
+    <h2>JavaScript and jQuery Event Demonstration</h2>
+    <p id="windowLoadMsg">Waiting for window load...</p>
+    <p id="domReadyMsg">Waiting for DOM ready...</p>
+    <p id="jqueryReadyMsg">Waiting for jQuery ready...</p>
+</body>
+</html>
