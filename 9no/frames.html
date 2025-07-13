@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Control</title>
+    <script>
+        function loadPage() {
+            document.getElementById("myIframe").src = "https://www.wikipedia.org";
+        }
+    </script>
+</head>
+<body>
+    <h2>JavaScript Controlling Iframe</h2>
+    <button onclick="loadPage()">Load Wikipedia</button>
+    <iframe id="myIframe" width="600" height="400"></iframe>
+</body>
+</html>
