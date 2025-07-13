@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show/Hide Paragraph</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#toggleButton").click(function() {
+                $("#myParagraph").toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Show/Hide Paragraph Demo</h2>
+    <button id="toggleButton">Toggle Paragraph</button>
+    <p id="myParagraph" style="display: none;">This is a paragraph that can be shown or hidden.</p>
+</body>
+</html>
