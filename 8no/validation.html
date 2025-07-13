@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .error { color: red; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <form id="registerForm">
+        <h3>Register</h3>
+        <label>Full Name* <input type="text" id="fullName" maxlength="20"></label>
+        <span class="error" id="fullNameError"></span><br>
+        
+        <label>E-Mail* <input type="text" id="email"></label>
+        <span class="error" id="emailError"></span><br>
+        
+        <label>Username* <input type="text" id="username"></label>
+        <span class="error" id="usernameError"></span><br>
+        
+        <label>Password* <input type="password" id="password"></label>
+        <span class="error" id="passwordError"></span><br>
+        
+        <label>Confirm Password* <input type="password" id="confirmPassword"></label>
+        <span class="error" id="confirmPasswordError"></span><br>
+        
+        <label>Services* 
+            <select id="services">
+                <option value="">Select a service</option>
+                <option value="service1">Service 1</option>
+                <option value="service2">Service 2</option>
+            </select>
+        </label>
+        <span class="error" id="servicesError"></span><br>
+        
+        <label>Message: <textarea id="message" maxlength="200"></textarea></label>
+        <span class="error" id="messageError"></span><br>
+        
+        <button type="submit">SUBMIT</button>
+    </form>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            let valid = true;
+
+            // Full Name Validation
+            let fullName = document.getElementById("fullName").value;
+            if (fullName.length === 0) {
+                document.getElementById("fullNameError").innerText = "Full Name is required";
+                valid = false;
+            } else {
+                document.getElementById("fullNameError").innerText = "";
+            }
+
+            // Email Validation
+            let email = document.getElementById("email").value;
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Invalid Email format";
+                valid = false;
+            } else {
+                document.getElementById("emailError").innerText = "";
+            }
+
+            // Username Validation (must start with letters followed by numbers)
+            let username = document.getElementById("username").value;
+            let usernamePattern = /^[a-zA-Z]+\d+$/;
+            if (!usernamePattern.test(username)) {
+                document.getElementById("usernameError").innerText = "Username must start with letters followed by numbers";
+                valid = false;
+            } else {
+                document.getElementById("usernameError").innerText = "";
+            }
+
+            // Password Validation (minimum 8 characters)
+            let password = document.getElementById("password").value;
+            if (password.length < 8) {
+                document.getElementById("passwordError").innerText = "Password must be at least 8 characters long";
+                valid = false;
+            } else {
+                document.getElementById("passwordError").innerText = "";
+            }
+
+            // Confirm Password Validation
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            if (confirmPassword !== password) {
+                document.getElementById("confirmPasswordError").innerText = "Passwords do not match";
+                valid = false;
+            } else {
+                document.getElementById("confirmPasswordError").innerText = "";
+            }
+
+            // Services Validation
+            let services = document.getElementById("services").value;
+            if (services === "") {
+                document.getElementById("servicesError").innerText = "Please select a service";
+                valid = false;
+            } else {
+                document.getElementById("servicesError").innerText = "";
+            }
+
+            // Prevent form submission if validation fails
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
